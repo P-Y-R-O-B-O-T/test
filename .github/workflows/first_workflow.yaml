@@ -1,0 +1,26 @@
+name: testing_first_workflow
+on:
+  push: # an event
+    branches: # define which branch this workflow will be triggered upon
+      - main
+  pull_request: # an event
+    branches: # define which branch this workflow will be triggered upon
+      - main
+  workflow_dispatch: # helps to trigger an event without pushing changes to repo
+
+jobs:
+  hello: # job name
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2 # define the action that will be used to do all the tasks (<github_repo>@<release_version/tag/commit_hash/branch_name>)
+      - name: hello world # step name
+        run: echo "Hello World" # run shell command
+        shell: bash # specify the shell that will be used
+
+  goodbye:
+    runs-on: ubuntu-latest
+    steps:
+      - name: goodbye world
+        run: echo "Goodbye World"
+        shell: bash
+
